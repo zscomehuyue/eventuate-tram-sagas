@@ -14,30 +14,30 @@ import java.util.function.Function;
 public class SagaCommandHandler extends CommandHandler {
 
 
-  private Optional<BiFunction<CommandMessage, PathVariables, LockTarget>> preLock = Optional.empty();
-  private Optional<PostLockFunction> postLock = Optional.empty();
+    private Optional<BiFunction<CommandMessage, PathVariables, LockTarget>> preLock = Optional.empty();
+    private Optional<PostLockFunction> postLock = Optional.empty();
 
-  public <C> SagaCommandHandler(String channel, String resource, Class<C> commandClass, BiFunction<CommandMessage<C>, PathVariables, List<Message>> handler) {
-    super(channel, Optional.of(resource), commandClass, handler);
-  }
+    public <C> SagaCommandHandler(String channel, String resource, Class<C> commandClass, BiFunction<CommandMessage<C>, PathVariables, List<Message>> handler) {
+        super(channel, Optional.of(resource), commandClass, handler);
+    }
 
-  public <C> SagaCommandHandler(String channel, Class<C> commandClass, Function<CommandMessage<C>, List<Message>> handler) {
-    super(channel, Optional.empty(), commandClass, (c, pv) -> handler.apply(c));
-  }
+    public <C> SagaCommandHandler(String channel, Class<C> commandClass, Function<CommandMessage<C>, List<Message>> handler) {
+        super(channel, Optional.empty(), commandClass, (c, pv) -> handler.apply(c));
+    }
 
-  public void setPreLock(BiFunction<CommandMessage, PathVariables, LockTarget> preLock) {
-    this.preLock = Optional.of(preLock);
-  }
+    public void setPreLock(BiFunction<CommandMessage, PathVariables, LockTarget> preLock) {
+        this.preLock = Optional.of(preLock);
+    }
 
-  public void setPostLock(PostLockFunction postLock) {
-    this.postLock = Optional.of(postLock);
-  }
+    public void setPostLock(PostLockFunction postLock) {
+        this.postLock = Optional.of(postLock);
+    }
 
-  public Optional<BiFunction<CommandMessage, PathVariables, LockTarget>> getPreLock() {
-    return preLock;
-  }
+    public Optional<BiFunction<CommandMessage, PathVariables, LockTarget>> getPreLock() {
+        return preLock;
+    }
 
-  public Optional<PostLockFunction> getPostLock() {
-    return postLock;
-  }
+    public Optional<PostLockFunction> getPostLock() {
+        return postLock;
+    }
 }

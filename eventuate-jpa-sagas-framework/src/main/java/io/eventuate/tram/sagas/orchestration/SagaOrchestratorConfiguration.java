@@ -11,13 +11,13 @@ import org.springframework.context.annotation.Import;
 public class SagaOrchestratorConfiguration {
 
 
-  @Bean
-  public SagaInstanceRepository sagaInstanceRepository() {
-    return new SagaInstanceRepositoryJdbc();
-  }
+    @Bean
+    public SagaInstanceRepository sagaInstanceRepository() {
+        return new SagaInstanceRepositoryJdbc();
+    }
 
-  @Bean
-  public SagaCommandProducer sagaCommandProducer(CommandProducer commandProducer) {
-    return new SagaCommandProducer(commandProducer);
-  }
+    @Bean
+    public SagaCommandProducer sagaCommandProducer(CommandProducer commandProducer) {
+        return new SagaCommandProducer(commandProducer);
+    }
 }

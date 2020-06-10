@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SagaParticipantConfiguration {
 
-  @Bean
-  public SagaLockManager sagaLockManager() {
-    return new SagaLockManagerImpl();
-  }
+    @Bean
+    public SagaLockManager sagaLockManager() {
+        return new SagaLockManagerImpl();
+    }
 }
